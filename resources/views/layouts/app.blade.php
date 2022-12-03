@@ -24,12 +24,12 @@
 
     <style>
         .page-item.active .page-link {
-            background-color: #1E3231;
-            border-color: #1E3231;
+            background-color: #564D4A;
+            border-color: #564D4A;
         }
 
         .page-link {
-            color: #1E3231;
+            color: #564D4A;
         }
     </style>
 </head>

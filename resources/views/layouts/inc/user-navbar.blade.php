@@ -17,16 +17,17 @@
                 <a href="{{ url('contact') }}">Contact</a>
             </li>
             <li class="{{ Request::is('categories') ? 'active' : '' }}">
-                <a href="{{ url('categories') }}">Categories <i class="fa-solid fa-angle-down"></i></a>
+                <a href="{{ url('categories') }}">Categories</a>
 
-                <div class="dropdown_menu">
+                {{-- <div class="dropdown_menu">
                     <ul>
                         <li><a href="#">Category 1</a></li>
                         <li><a href="#">Category 1</a></li>
                         <li><a href="#">Category 1</a></li>
                         <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 1</a></li>
                     </ul>
-                </div>
+                </div> --}}
             </li>
             <li class="{{ Request::is('faq') ? 'active' : '' }}">
                 <a href="{{ url('faq') }}">FAQs</a>
@@ -37,7 +38,7 @@
         <li class="nav-item dropdown" style="margin-top: 5px;">
 
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff">
                 <i class="fas fa-user fa-fw"></i>
             </a>
 
@@ -56,29 +57,5 @@
                 </form>
             </div>
         </li>
-    </div>
-</section>
-
-<!-- Sub-header Section  -->
-<section class="sub-header">
-    <div class="left-content">
-        @php
-            $categories = App\Models\Category::where('navbar_status', '0')
-                ->where('status', '0')
-                ->get();
-        @endphp
-        @foreach ($categories as $cateitem)
-            <div class="content-col">
-                <button>
-                    <img src="{{ asset("$cateitem->image") }}" alt="">
-                    <a href="{{ url('category/' . $cateitem->name) }}"> {{ $cateitem->name }}</a>
-                </button>
-            </div>
-        @endforeach
-    </div>
-    <div class="right-content">
-        {{-- <div class="breadcrumbs">
-            <a href="home.html">Home</a>
-        </div> --}}
     </div>
 </section>

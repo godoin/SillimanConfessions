@@ -17,7 +17,9 @@
                 <h2>Post Your Confession</h2>
                 <a href="{{ url()->previous() }}" class="text-decoration-none"><i class="fas fa-times"></i></a>
             </div>
-
+            @if (session('message'))
+                <h6 class="alert alert-success mb-3">{{ session('message') }}</h6>
+            @endif
             <form action="{{ url('new-post') }}" method="POST">
                 @csrf
                 <div class="content-row">

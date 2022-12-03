@@ -13,8 +13,9 @@ class FrontEndController extends Controller
 {
     public function index()
     {
-        $latest_posts = Post::where('status', '0')->orderBy('created_at', 'DESC')->get()->take(9);
-        return view('frontend.index', compact('latest_posts'));
+        $latest_posts = Post::where('status', '0')->orderBy('created_at', 'DESC')->get()->take(6);
+        $post = Post::where('status', '0')->orderBy('created_at', 'ASC')->paginate(6);
+        return view('frontend.index', compact('latest_posts', 'post'));
     }
 
     public function about()
@@ -59,11 +60,12 @@ class FrontEndController extends Controller
 
     public function viewPost(string $category_name, string $post_name)
     {
+        $latest_posts = Post::where('status', '0')->orderBy('created_at', 'DESC')->get()->take(6);
         $category = Category::where('name', $category_name)->where('status', '0')->first();
         if ($category) {
             $post = Post::where('category_id', $category->id)->where('name', $post_name)->where('status', '0')->first();
             // $latest_posts = Post::where('category_id', $category->id)->where('status', '0')->orderBy('created_at', 'DESC')->get();
-            return view('frontend.post.view', compact('post'));
+            return view('frontend.post.view', compact('post', 'latest_posts'));
         } else {
             return view('frontend.index');
         }
@@ -87,14 +89,6 @@ class FrontEndController extends Controller
         $post->created_by = Auth::user()->id;
         $post->save();
 
-        return redirect('home')->with('message', 'Post Added Succesfully');
-    }
-    public function searchPosts(Request $request)
-    {
-        if ($request->search) {
-            // $searchPosts = Post::where('name', 'LIKE', '%' . $request->search . '%')->latest()->paginate(12);
-            // return
-        } else {
-        }
+        return redirect('frontend.post.index')->with('message', 'Post Added Succesfully');
     }
 }

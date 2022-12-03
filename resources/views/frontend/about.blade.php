@@ -3,6 +3,33 @@
 @section('title', 'About')
 
 @section('content')
+    <!-- Sub-header Section  -->
+    <section class="sub-header">
+        <div class="left-content">
+            @php
+                $categories = App\Models\Category::where('navbar_status', '0')
+                    ->where('status', '0')
+                    ->get();
+            @endphp
+            @foreach ($categories as $cateitem)
+                <div class="content-col">
+                    <button>
+                        <img src="{{ asset("$cateitem->image") }}" alt="">
+                        <a href="{{ url('category/' . $cateitem->name) }}"> {{ $cateitem->name }}</a>
+                    </button>
+                </div>
+            @endforeach
+        </div>
+        <div class="right-content">
+            <div class="breadcrumbs">
+                <i class="fa-solid fa-house"></i>
+                <a href="{{ url('home') }}">Home</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <a href="{{ url('about') }}">About</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Introduction Section  -->
     <section class="intro">
         <div class="left-intro">
