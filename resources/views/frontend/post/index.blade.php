@@ -27,7 +27,7 @@
                 <i class="fa-solid fa-angle-right"></i>
                 <a href="{{ url('categories') }}">Categories</a>
                 <i class="fa-solid fa-angle-right"></i>
-                <a href="{{ url('category/' . $cateitem->name) }}">{{ $cateitem->name }}</a>
+                <a href="{{ url('category/' . $cate_name) }}">{{ $cate_name }}</a>
             </div>
         </div>
     </section>

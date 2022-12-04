@@ -37,7 +37,7 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->status == '1' ? 'Hidden' : 'Shown' }}</td>
+                                <td>{{ $item->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                 <td>
                                     <a href=" {{ url('admin/edit-post/' . $item->id) }}" class="btn btn-success"><i
                                             class="fa-solid fa-pen-to-square"></i></a>

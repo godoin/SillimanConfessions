@@ -87,7 +87,7 @@
                                                     <img src=" {{ asset('uploads/category/' . $item->image) }}"
                                                         width="50px" height="50px" alt="">
                                                 </td>
-                                                <td> {{ $item->status == '1' ? 'Hidden' : 'Shown' }} </td>
+                                                <td> {{ $item->status == '1' ? 'Hidden' : 'Visible' }} </td>
                                                 <td> {{ $item->created_at }} </td>
                                             </tr>
                                         @endforeach

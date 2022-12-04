@@ -66,10 +66,11 @@ class CategoryController extends Controller
                 File::delete();
             }
 
+            $uploadPath = 'uploads/category/';
             $file = $request->file('image');
             $filename = time() . '.' .  $file->getClientOriginalExtension();
             $file->move('uploads/category/', $filename);
-            $category->image = $filename;
+            $category->image = $uploadPath . $filename;
         }
 
         $category->navbar_status = $request->navbar_status == true ? '1' : '0';

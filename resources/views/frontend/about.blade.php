@@ -61,13 +61,13 @@
         </div>
     </section>
 
-    <!-- Content Collection Section  -->
-    <section class="collection">
+    <!-- About Collection Section  -->
+    <section class="about-collection">
         <h1>Check Our Collection</h1>
         <p class="message">See all of them? <a href="{{ url('categories') }}">Categories</a></p>
         <div class="row">
             @foreach ($all_categories as $all_cateitem)
-                <div class="col-md-4" style="padding: 30px 50px;">
+                <div class="col-md-4">
                     <div class="content mb-3">
                         <a href="{{ url('category/' . $all_cateitem->name) }}" class="text-decoration-none">
                             <h5 class="text-red mb-0">{{ $all_cateitem->name }}</h5>

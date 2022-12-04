@@ -24,6 +24,12 @@
             <div class="breadcrumbs">
                 <i class="fa-solid fa-house"></i>
                 <a href="{{ url('home') }}">Home</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <a href="{{ url('categories') }}">Categories</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <a href="{{ url('category/' . $cate_name) }}">{{ $cate_name }}</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <a href="{{ url('category/' . $cate_name . '/' . $post_name) }}">Post</a>
             </div>
         </div>
     </section>

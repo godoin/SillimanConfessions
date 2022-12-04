@@ -7,7 +7,7 @@
 <section class="header custom-pad-user">
     <div class="left-content">
         <ul class="nav-links">
-            <li class="{{ Request::is('home') ? 'active' : '' }}">
+            <li class="test {{ Request::is('home') ? 'active' : '' }}">
                 <a href="{{ url('home') }}">Home</a>
             </li>
             <li class="{{ Request::is('about') ? 'active' : '' }}">

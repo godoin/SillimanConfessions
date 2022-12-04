@@ -20,6 +20,7 @@ class FrontEndController extends Controller
 
     public function about()
     {
+
         $all_categories = Category::where('status', '0')->get();
         return view('frontend.about', compact('all_categories'));
     }
@@ -46,13 +47,13 @@ class FrontEndController extends Controller
         if ($category) {
             // $post = Post::where('category_id', $category->id)->where('status', '0')->paginate(1);
             $search = $request['search'] ?? "";
-
+            $cate_name = $category_name;
             if ($search != "") {
                 $post = Post::where('category_id', $category->id)->where('name', 'LIKE', "%$search")->where('status', '0')->orderBy('created_at', 'DESC')->paginate(8);
             } else {
                 $post = Post::where('category_id', $category->id)->where('status', '0')->orderBy('created_at', 'DESC')->paginate(8);
             }
-            return view('frontend.post.index', compact('post', 'category', 'search'));
+            return view('frontend.post.index', compact('post', 'category', 'search', 'cate_name'));
         } else {
             return view('frontend.index');
         }
@@ -64,8 +65,10 @@ class FrontEndController extends Controller
         $category = Category::where('name', $category_name)->where('status', '0')->first();
         if ($category) {
             $post = Post::where('category_id', $category->id)->where('name', $post_name)->where('status', '0')->first();
+            $cate_name = $category_name;
+            $post_name = $post_name;
             // $latest_posts = Post::where('category_id', $category->id)->where('status', '0')->orderBy('created_at', 'DESC')->get();
-            return view('frontend.post.view', compact('post', 'latest_posts'));
+            return view('frontend.post.view', compact('post', 'latest_posts', 'cate_name', 'post_name'));
         } else {
             return view('frontend.index');
         }
@@ -89,6 +92,6 @@ class FrontEndController extends Controller
         $post->created_by = Auth::user()->id;
         $post->save();
 
-        return redirect('frontend.post.index')->with('message', 'Post Added Succesfully');
+        return redirect()->back()->with('message', 'Post Added Succesfully');
     }
 }

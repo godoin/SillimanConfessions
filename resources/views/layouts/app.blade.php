@@ -25,10 +25,13 @@
     <style>
         .page-item.active .page-link {
             background-color: #564D4A;
-            border-color: #564D4A;
         }
 
         .page-link {
+            color: #564D4A;
+        }
+
+        .page-link:hover {
             color: #564D4A;
         }
     </style>
