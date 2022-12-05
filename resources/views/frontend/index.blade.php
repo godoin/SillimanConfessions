@@ -34,7 +34,7 @@
             <div class="row">
                 @foreach ($post as $post_item)
                     <div class="wrapper-home">
-                        <a href="#">
+                        <a href="{{ url('category/' . $post_item->category->name . '/' . $post_item->name) }}">
                             <div class="content-col">
                                 <h3>{{ $post_item->created_at->format('m-d-Y') }}</h3>
                                 <div class="content">
@@ -58,17 +58,6 @@
                     {{ $post->links() }}
                 </div>
         </section>
-
-        {{-- @foreach ($latest_posts as $post_item)
-                <div class="row-col">
-                    <div class="content mb-3">
-                        <a href="{{ url('category/' . $post_item->category->name . '/' . $post_item->name) }}"
-                            class="text-decoration-none">
-                            <h5 class="text-dark mb-0">{{ $post_item->name }}</h5>
-                        </a>
-                    </div>
-                </div>
-@endforeach --}}
 
         <!-- Content Collection Section  -->
         <section class="post-links" style="width: 20%;">

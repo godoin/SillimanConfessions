@@ -3,7 +3,6 @@
 @section('title', 'Category')
 
 @section('content')
-
     <!-- Categories Section  -->
     <section class="categories">
         <header> Select a Category</header>
